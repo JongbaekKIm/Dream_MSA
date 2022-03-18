@@ -1,34 +1,61 @@
+# db, mybatis, eureka 설정은 git에 있음.(https://github.com/JongbaekKIm/Dream_MSA.git)
+
 server:
   port: 8003
 
+---
+
 spring:
   application:
-    name: product-service
+   name: product-service  # git에 있는 확장자 제외한 설정파일 이름.
+  config:              # gradle에 config 추가.
+   import: optional:configserver:http://localhost:8888  # config 서버 위치
   devtools:
      livereload:
         enabled: true
      restart:
         enabled: true
+# 이게 있어야되나... 없어도 되는데....
   freemarker:
      cache: false
   thymeleaf:
      cache: false
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.1.51:3306/dream?serverTimezone=UTC&characterEncoding=UTF-8
-    username: dream
-    password: 1234
-  resources:
-    static-locations: classpath:/resources/static/**
+     
+---
+# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
+management:
+  endpoints:
+   web:
+    exposure:
+     include: refresh 
 
-mybatis:
-  mapper-locations: classpath*:mapper/*.xml
+#외부
+#kafka 설정
+kafka:
+  server_endpoint: 127.0.0.1:9092
+  topic_name: my-topic
+  group_id: consumer-1
 
-eureka:
-  instance:
-    instance-id: product-microservice-instance
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+#외부   
+#  # db 설정   
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://192.168.1.51:3306/dream?serverTimezone=UTC&characterEncoding=UTF-8
+#    username: dream
+#    password: 1234
+#  resources:
+#    static-locations: classpath:/resources/static/**
+    
+## mybatis 연동 설정
+#mybatis:
+#  mapper-locations: classpath*:mapper/*.xml
+
+# 유레카 클라이언트 설정   
+#eureka:
+#  instance:
+#    instance-id: product-microservice-instance  # eureka에 등록되는 id 값
+#  client:
+#    register-with-eureka: true # 유레카에 등록할지 여부.
+#    fetch-registry: true  # 유레카에서 조회할지 여부
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka # 서비스를 등록할 서버 주소를 지정

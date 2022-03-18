@@ -4,9 +4,29 @@ server:
 spring:
   application:
     name: discovery-service
-    
+
+#외부
+# 유레카 설정    
 eureka:
   client:
-    register-with-eureka: false
+    register-with-eureka: false   # 유레카 서버에 서비스 등록
     fetch-registry: false
-    
+# 
+#---
+#
+## 내부    
+#spring:
+#  application:
+#   name: config-test  # git에 있는 확장자 제외한 이름.
+#  config:
+#   import: optional:configserver:http://localhost:8888  # config 서버 위치
+#   
+#---
+## actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
+#management:
+#  endpoints:
+#   web:
+#    exposure:
+#     include: refresh 
+#   
+   
