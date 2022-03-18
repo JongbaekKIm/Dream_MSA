@@ -13,9 +13,9 @@ import lombok.Setter;
 @Setter
 public class loanProductVO {
 	
-	private int proNo;	//��ǰ ��ȣ
-	private String proName;	//��ǰ �̸�
-	private double proLimit;	// ���� �ѵ�
-	private String description;	// ��ǰ ����
-	private int term;	//���� �Ⱓ
+	private int proNo;	//상품 번호
+	private String proName;	//상품 이름
+	private double proLimit;	// 대출 한도
+	private String description;	// 상품 설명
+	private int term;	//대출 기간
 }
