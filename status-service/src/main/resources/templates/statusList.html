@@ -50,7 +50,7 @@
 								<td class="name" th:text="${'신청 전'}"></td>
 								<td>															
 									<label><input type="radio"  th:attr="name='status'+${i.index}" value="1"/><span>승인</span></label> 
-									<label><input type="radio"  th:attr="name='status'+${i.index}" value="0" /><span>거절</span></label>									 
+									<label><input type="radio"  th:attr="name='status'+${i.index}" value="2" /><span>거절</span></label>									 
 									<input type="hidden" th:value="${list.orderNo}" class="orderNo"/>
 								</td>
 							</tr>

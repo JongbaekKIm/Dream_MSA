@@ -1,212 +1,214 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>대출 신청 페이지</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <style>
-        body {
-            font-family: sans-serif;
-        }
-        body *,
-        body *:before,
-        body *:after {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
+<title>대출 신청 페이지</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+	rel="stylesheet">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<style>
+body {
+	font-family: sans-serif;
+}
 
-        body .wrapper {
-            width: 1140px;
-            margin: 0 auto;
-            max-width: 100%;
-            padding: 0 15px;
-        }
+body *, body *:before, body *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
 
-        body .clearfix:after {
-            content: " ";
-            clear: both;
-            display: table;
-        }
+body .wrapper {
+	width: 1140px;
+	margin: 0 auto;
+	max-width: 100%;
+	padding: 0 15px;
+}
 
-        .form {
-            padding-top: 30px;
-            margin-bottom: 30px;
-        }
+body .clearfix:after {
+	content: " ";
+	clear: both;
+	display: table;
+}
 
-        .form .header {
-            margin-bottom: 35px;
-            padding-bottom: 35px;
-            border-bottom: 1px solid #ddd;
-        }
+.form {
+	padding-top: 30px;
+	margin-bottom: 30px;
+}
 
-        .form .header .title {
-            font-size: 25px;
-            font-weight: bold;
-            color: #1259a7;
-        }
+.form .header {
+	margin-bottom: 35px;
+	padding-bottom: 35px;
+	border-bottom: 1px solid #ddd;
+}
 
-        .form .header .desc {
-            margin-left: 10px;
-        }
+.form .header .title {
+	font-size: 25px;
+	font-weight: bold;
+	color: #1259a7;
+}
 
-        .form .header .message {
-            margin: 25px 0 70px 0;
-            font-size: 20px;
-            font-weight: normal;
-            color: #262626;
-        }
+.form .header .desc {
+	margin-left: 10px;
+}
 
-        .form .content {
-            margin: 0 -15px;
-        }
+.form .header .message {
+	margin: 25px 0 70px 0;
+	font-size: 20px;
+	font-weight: normal;
+	color: #262626;
+}
 
-        .form .content:after {
-            clear: both;
-            content: " ";
-            display: table;
-        }
+.form .content {
+	margin: 0 -15px;
+}
 
-        .form .content .half {
-            min-width: 400px;
-            float: left;
-            width: 50%;
-            padding: 0 15px;
-        }
+.form .content:after {
+	clear: both;
+	content: " ";
+	display: table;
+}
 
-        .form .content .half label .point {
-            color: #1259a7;
-        }
+.form .content .half {
+	min-width: 400px;
+	float: left;
+	width: 50%;
+	padding: 0 15px;
+}
 
-        .form .content .half .message {
-            margin-bottom: 35px;
-        }
+.form .content .half label .point {
+	color: #1259a7;
+}
 
-        .form .content .half .message .length {
-            float: right;
-        }
+.form .content .half .message {
+	margin-bottom: 35px;
+}
 
-        .form .content .half .limit {
-            margin: 35px 0;
-        }
+.form .content .half .message .length {
+	float: right;
+}
 
-        .form .content .half .satisfaction .comment {
-            float: right;
-        }
+.form .content .half .limit {
+	margin: 35px 0;
+}
 
-        .form .content .half .satisfaction .icons {
-            margin-top: 25px;
-        }
+.form .content .half .satisfaction .comment {
+	float: right;
+}
 
-        .form .content .half .satisfaction .icons:after {
-            content: " ";
-            clear: both;
-            display: table;
-        }
+.form .content .half .satisfaction .icons {
+	margin-top: 25px;
+}
 
-        .form .content .half .satisfaction .icons label {
-            float: left;
-            width: calc(100%/3);
-        }
+.form .content .half .satisfaction .icons:after {
+	content: " ";
+	clear: both;
+	display: table;
+}
 
-        .form .content .half .satisfaction .icons label i {
-            cursor: pointer;
-            padding: 5px;
-            font-size: 42px;
-            opacity: 0.25;
-        }
+.form .content .half .satisfaction .icons label {
+	float: left;
+	width: calc(100%/ 3);
+}
 
-        .form .content .half .satisfaction .icons label.left {
-            text-align: right;
-        }
+.form .content .half .satisfaction .icons label i {
+	cursor: pointer;
+	padding: 5px;
+	font-size: 42px;
+	opacity: 0.25;
+}
 
-        .form .content .half .satisfaction .icons label.center {
-            text-align: center;
-        }
+.form .content .half .satisfaction .icons label.left {
+	text-align: right;
+}
 
-        .form .content .half .satisfaction .icons label i:hover {
-            opacity: 0.5;
-        }
+.form .content .half .satisfaction .icons label.center {
+	text-align: center;
+}
 
-        .form .content .half .satisfaction .icons label.on i {
-            color: #1259a7;
-        }
+.form .content .half .satisfaction .icons label i:hover {
+	opacity: 0.5;
+}
 
-        .form .content .half .satisfaction .icons label.on i {
-            opacity: 1;
-        }
+.form .content .half .satisfaction .icons label.on i {
+	color: #1259a7;
+}
 
-        .form .content .half .satisfaction .icons label input {
-            display: none;
-        }
+.form .content .half .satisfaction .icons label.on i {
+	opacity: 1;
+}
 
-        .form .content .half label {
-            display: block;
-            margin-bottom: 15px;
-        }
+.form .content .half .satisfaction .icons label input {
+	display: none;
+}
 
-        .form .content .half textarea {
-            border-radius: 0;
-            height: 379px;
-            width: 100%;
-            resize: none;
-            padding: 15px;
-            border: 1px solid #ddd;
-            box-shadow: none;
-        }
+.form .content .half label {
+	display: block;
+	margin-bottom: 15px;
+}
 
-        .form .content .half input {
-            border-radius: 0;
-            padding: 15px;
-            height: 50px;
-            box-shadow: none;
-            border: 1px solid #ddd;
-            width: 100%;
-        }
+.form .content .half textarea {
+	border-radius: 0;
+	height: 379px;
+	width: 100%;
+	resize: none;
+	padding: 15px;
+	border: 1px solid #ddd;
+	box-shadow: none;
+}
 
-        .form .content .half textarea:focus,
-        .form .content .half input:focus {
-            border-color: #1259a7;
-            outline: 0;
-        }
+.form .content .half input {
+	border-radius: 0;
+	padding: 15px;
+	height: 50px;
+	box-shadow: none;
+	border: 1px solid #ddd;
+	width: 100%;
+}
 
-        .form .content .half .action {
-            padding-top: 15px;
-        }
+.form .content .half textarea:focus, .form .content .half input:focus {
+	border-color: #1259a7;
+	outline: 0;
+}
 
-        .form .content .half .action button {
-            font-size: 16px;
-            height: 50px;
-            display: inline-block;
-            cursor: pointer;
-            background: #1259a7;
-            width: 100%;
-            border: 1px solid #1259a7;
-            box-shadow: none;
-            color: #fff;
-        }
+.form .content .half .action {
+	padding-top: 15px;
+}
 
-        @media(max-width:767px) {
-            .form .header {
-                text-align: center;
-            }
+.form .content .half .action button {
+	font-size: 16px;
+	height: 50px;
+	display: inline-block;
+	cursor: pointer;
+	background: #1259a7;
+	width: 100%;
+	border: 1px solid #1259a7;
+	box-shadow: none;
+	color: #fff;
+}
 
-            .form .header .title {
-                display: block;
-            }
-
-            .form .header .desc {
-                display: block;
-                margin: 10px 0 0 0;
-            }
-        }
-    </style>
+@media ( max-width :767px) {
+	.form .header {
+		text-align: center;
+	}
+	.form .header .title {
+		display: block;
+	}
+	.form .header .desc {
+		display: block;
+		margin: 10px 0 0 0;
+	}
+}
+</style>
 </head>
 <body>
 	<form name="applyForm" id="applyForm" method="post">
+<<<<<<< HEAD
     <div class="form">
         <div class="wrapper">
             <div class="header">
@@ -250,6 +252,38 @@
                         <input type="text" id="orderPrice" name="orderPrice" placeholder="대출하실 금액을 입력하세요.">
                     </div>
                    <!--  <div class="satisfaction">
+=======
+		<div class="form">
+			<div class="wrapper">
+				<div class="header">
+					<span class="title">대출 신청</span> 
+					<span class="desc" th:text="${list.preferred_username} + '님 환영합니다.'"></span>
+					<div ></div>
+					<input type="hidden" id="proNo" name="proNo"
+						th:value="${proVO.proNo}"> <input type="hidden"
+						id="userId" name="userId" th:value="${list.preferred_username}">
+					<input type="hidden" id="term" name="term" th:value="${proVO.term}">
+					<div class="content">
+
+						<div class="half">
+							<div class="name">
+								<label for="name">대출 상품 이름</label> <input type="text" id="name"
+									placeholder="" th:value="${proVO.proName}" readonly="true">
+							</div>
+							<div class="limit">
+								<label for="limit"> <span>대출 제한금액</span> <span
+									class="point">*</span>
+								</label> <input type="text" id="limit" placeholder=""
+									th:value="${proVO.proLimit}" readonly="true">
+							</div>
+							<div class="orderPrice">
+								<label for="orderPrice"> <span>대출 금액</span> <span
+									class="point">*</span>
+								</label> <input type="text" id="orderPrice" name="orderPrice"
+									placeholder="대출하실 금액을 입력하세요.">
+							</div>
+							<!--  <div class="satisfaction">
+>>>>>>> 35d0f18210065289d44ac886a2a50891ef8df718
                         <label for="satisfaction">
                             <span>회원등급</span>
                             <span class="point">*</span>
@@ -270,67 +304,75 @@
                             </label>
                         </div>
                     </div> -->
-                    <div class="action">
-                        <button onclick="apply()" type="button">대출 신청</button>
-                    </div>
-                </div>
-                <div class="half">
-                    <div class="message">
-                        <label for="message">
-                            <span>대출 상품 설명</span><!-- 
+							<div class="action">
+								<button onclick="apply()" type="button">대출 신청</button>
+							</div>
+						</div>
+						<div class="half">
+							<div class="message">
+								<label for="message"> <span>대출 상품 설명</span> <!-- 
                             <span class="point">*</span>
                             <span class="length">(<span>0</span> / 1000)</span> -->
-                        </label>
-                        <textarea id="description" placeholder="대출 상품 설명" th:text="${proVO.description}" readonly="true"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </form>
-    <script>
-        var comments = ["VIP회원", "정회원", "일반회원"];
+								</label>
+								<textarea id="description" placeholder="대출 상품 설명"
+									th:text="${proVO.description}" readonly="true"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</form>
+	<script>
+		var comments = [ "VIP회원", "정회원", "일반회원" ];
 
-        $(".form .icons label i").on("click", function() {
-            var idx = $(this).parent("label").index();
-            $(this).parent("label").addClass("on").siblings().removeClass("on");
-            $(".form .satisfaction .comment").text(comments[idx]);
-        });
+		$(".form .icons label i").on(
+				"click",
+				function() {
+					var idx = $(this).parent("label").index();
+					$(this).parent("label").addClass("on").siblings()
+							.removeClass("on");
+					$(".form .satisfaction .comment").text(comments[idx]);
+				});
 
-        $(".form textarea").on("keyup", function() {
-            var len = $(this).val().length;
-            $(this).siblings("label").find(".length > span").text(len);
-        });
-    </script>
-    <script>
-    	function apply(){
-    		var proNo = $('#proNo').val();
-    		var userId = $('#userId').val();
-    		var orderPrice = $('#orderPrice').val();
-    		var term = $('#term').val();
-    		var arr = { "proNo":proNo, "userId":userId, "orderPrice":orderPrice, "term":term};
-    		
-    		var queryString = $("form[name=applyForm]").serialize();
-    		console.log(queryString);
-    		console.log(arr);
-    		
-    		$.ajax({
-    			anyne:true,
-    			type :'POST',
-    			url :'/apply/kafka',
-    			data : JSON.stringify(arr),
-    			dataType: "text",
-    			contentType: 'application/json',
-    			success : function(data){
-    				alert("변경완료");
-    				location.href="/menu/menu";
-    			}, 
-    			error : function(xhr, status, error){
-    				alert(error);
-    			}
-    		});
-    	}
-    </script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		$(".form textarea").on("keyup", function() {
+			var len = $(this).val().length;
+			$(this).siblings("label").find(".length > span").text(len);
+		});
+	</script>
+	<script>
+		function apply() {
+			var proNo = $('#proNo').val();
+			var userId = $('#userId').val();
+			var orderPrice = $('#orderPrice').val();
+			var term = $('#term').val();
+			var arr = {
+				"proNo" : proNo,
+				"userId" : userId,
+				"orderPrice" : orderPrice,
+				"term" : term
+			};
+
+			var queryString = $("form[name=applyForm]").serialize();
+			console.log(queryString);
+			console.log(arr);
+
+			$.ajax({
+				anyne : true,
+				type : 'POST',
+				url : '/apply/kafka',
+				data : JSON.stringify(arr),
+				dataType : "text",
+				contentType : 'application/json',
+				success : function(data) {
+					alert("변경완료");
+					location.href = "/menu/menu";
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			});
+		}
+	</script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </body>
 </html>

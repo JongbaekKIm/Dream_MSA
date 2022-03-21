@@ -1,6 +1,5 @@
 package com.dream.saveservice;
 
-import java.security.Principal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -12,10 +11,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import com.dream.saveservice.dto.MessageVo;
 import com.dream.saveservice.dto.SaveDto;
@@ -29,7 +24,6 @@ import lombok.extern.slf4j.Slf4j;
 @EnableEurekaClient
 @SpringBootApplication
 @AllArgsConstructor
-@Controller
 @Slf4j
 public class SaveServiceApplication {
 
@@ -55,9 +49,11 @@ public class SaveServiceApplication {
 			dto.setProNo(Integer.parseInt(vo.getProNo()));
 			dto.setUserId(vo.getUserId());
 			dto.setOrderPrice(Double.parseDouble(vo.getOrderPrice()));
-			dto.setOrderDate(df.format(cal.getTime()));
+			/* dto.setOrderDate(df.format(cal.getTime())); */
+			dto.setOrderDate(cal.getTime());
 			cal.add(Calendar.YEAR, Integer.parseInt(vo.getTerm()));
-			dto.setEndDate(df.format(cal.getTime()));
+//			dto.setEndDate(df.format(cal.getTime()));
+			dto.setEndDate(cal.getTime());
 //			dto.setTerm(vo.getTerm());
 //			logger.info("dto 상품기간 : "+dto.getTerm());
 			logger.info("dto 상품이름 : " + dto.getProNo());
@@ -71,16 +67,6 @@ public class SaveServiceApplication {
 			e.printStackTrace();
 		}
 	}
-
-	// keycloak 세션 정보 받고 나서 본인 아이디 검색
 	
-	@GetMapping("/orderCheck")
-	public String orderCheck(Principal principal, Model model) {
-		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-		String userId=(String) (token).getTokenAttributes().get( "preferred_username");
-		log.info("userId : "+userId);
-		service.select(userId);
-		model.addAttribute("list", service.select(userId));
-		return "orderCheck";
-	}
+	
 }

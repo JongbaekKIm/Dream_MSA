@@ -18,6 +18,6 @@ public class StatusDto {
 	private double orderPrice;	//�ֹ�����
 	private Date orderDate;	//�ֹ���¥
 	private Date endDate;	//������
-	private boolean status;
+	private int status;
 //	private String status2;
 }

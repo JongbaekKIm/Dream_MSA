@@ -58,8 +58,7 @@ eureka:
     register-with-eureka: true  # 유레카에 등록할지 여부.
     fetch-registry: true  # 유레카에서 조회할지 여부
     service-url:
-<<<<<<< HEAD
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka # 서비스를 등록할 서버 주소를 지정
       
 keycloak:
   realm: MSA
@@ -69,8 +68,5 @@ keycloak:
   auth-server-url: http://192.168.1.54:8080/auth
   credentials:
     secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
-=======
-      defaultZone: http://localhost:8761/eureka # 서비스를 등록할 서버 주소를 지정
-      
->>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e
+
 

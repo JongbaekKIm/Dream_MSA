@@ -1,5 +1,7 @@
 package com.dream.saveservice.dto;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +14,7 @@ public class SaveDto {
 	private int proNo;
 	private String userId;
 	private double orderPrice;
-	private String orderDate;
-	private String endDate;
+	private Date orderDate;
+	private Date endDate;
 	private int status;
 }

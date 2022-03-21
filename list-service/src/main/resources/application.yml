@@ -3,12 +3,12 @@
 server:
   port: 8007
 
----
-
 spring:
   application:
-<<<<<<< HEAD
-    name: list-service
+     name: list-service  # git에 있는 확장자 제외한 설정파일 이름.
+  config:              # gradle에 config 추가.
+   import: optional:configserver:http://localhost:8888  # config 서버 위치
+   use-legacy-processing: true #unable to load config data~ 오류 발생시 사용
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
@@ -36,7 +36,6 @@ mybatis:
 #    call-setters-on-nulls: true
 #    jdbc-type-for-null: varchar
 #    default-fetch-size: 500
-  mapper-locations: /mapper/**/*.xml
   type-aliases-package: com.dream.list.dto
 
 
@@ -49,23 +48,7 @@ mybatis:
 ##    com.project.study : error
 ##    com.project.study.controller : debug
     
-eureka:
-  instance:
-    instance-id: list-microservice-instance
 
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-
-         
-=======
-   name: list-service  # git에 있는 확장자 제외한 설정파일 이름.
-  config:              # gradle에 config 추가.
-   import: optional:configserver:http://localhost:8888  # config 서버 위치
-   
----
 # actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
 management:
   endpoints:
@@ -95,4 +78,4 @@ management:
 #    fetch-registry: true  # 유레카에서 조회할지 여부
 #    service-url:
 #      defaultZone: http://localhost:8761/eureka # 서비스를 등록할 서버 주소를 지정
->>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e
+

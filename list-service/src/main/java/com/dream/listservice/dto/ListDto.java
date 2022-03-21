@@ -12,4 +12,5 @@ public class ListDto {
 	private double orderPrice;
 	private Date orderDate;
 	private Date endDate;
+	private int status;
 }

@@ -2,23 +2,12 @@
 server:
   port: 8000
 
-<<<<<<< HEAD
-eureka:
-  client:
-    fetch-registry: true # 유레카 클라이언트 활성화
-    register-with-eureka: true # 유레카 클라이언트 활성화
-    service-url:
-      defaultZone: http://localhost:8761/eureka # 유레카 클라이언트로 등록
-       
-=======
->>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e
 spring:
   application:
    name: gateway-service  # git에 있는 확장자 제외한 설정파일 이름.
   config:              # gradle에 config 추가.
    import: optional:configserver:http://localhost:8888  # config 서버 위치
 
-<<<<<<< HEAD
 
   cloud:
     gateway:
@@ -101,8 +90,7 @@ keycloak:
   realm: MSA
   resource: spring-gateway-client
   auth-server-url: http://192.168.1.54:8080/auth
-=======
----
+
 # actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
 management:
   endpoints:
@@ -174,25 +162,4 @@ management:
 #          filters:
 #            - RewritePath=/user/?(?<segment>.*), /$\{segment}
 #
-##oAuth, keycloak 설정        
->>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e
-#  security:
-#    oauth2:
-#      client:
-#        provider:
-#          keycloak:
-#            issuer-uri: http://192.168.1.54:8080/auth/realms/MSA
-#            user-name-attribute: preferred_username
-#        registration: 
-#          keycloak:
-#            client-id: memberService
-#            client-secret: RePeZAfKZ9XFiFc2Z5LzzFstYeduPQSd
-#            authorization-grant-type: authorization_code
-<<<<<<< HEAD
-#            redirect-uri: "http://localhost:8000/user/auth"
 
-
-  
-=======
-#            redirect-uri: "http://localhost:8000/user/auth"
->>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e

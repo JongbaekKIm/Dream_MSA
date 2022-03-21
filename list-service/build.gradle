@@ -24,8 +24,13 @@ ext {
 
 dependencies {
 <<<<<<< HEAD
+<<<<<<< HEAD
 implementation('org.keycloak:keycloak-spring-boot-starter')
 	implementation('org.springframework.boot:spring-boot-starter-security')
+=======
+	implementation 'org.keycloak:keycloak-spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+>>>>>>> 35d0f18210065289d44ac886a2a50891ef8df718
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 =======
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
