@@ -7,11 +7,6 @@ server:
 spring:
   application:
     name: manage-service
-  devtools:
-     livereload:
-        enabled: true
-     restart:
-        enabled: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
@@ -19,62 +14,18 @@ spring:
     password: 1234
   security:
     oauth2:
-<<<<<<< HEAD
-     resourceserver:
-        jwt:
-          jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
-      
-=======
       resourceserver:
         jwt:
           jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
-#      client:
-#        provider:
-#          keycloak:
-#            issuer-uri: http://192.168.1.54:8080/auth/realms/MSA
-#        registration:
-#          keycloak:
-##            provider: keycloak
-#            client-id: spring-gateway-client
-#            client-secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
-#            authorization-grant-type: authorization_code
-#            redirect-uri: '{baseUrl}/login/oauth2/code/keycloak' 
->>>>>>> fa11c23d86f4714b0be5a183a4cf760af6f28ab7
+      
 keycloak:
   realm: MSA
   bearer-only: true
   ssl-required: external
-<<<<<<< HEAD
-  resource: memberService
-  auth-server-url: http://192.168.1.54:8080/auth
-  credentials:
-    secret: RePeZAfKZ9XFiFc2Z5LzzFstYeduPQSd
-    
-=======
   resource: spring-gateway-client
   auth-server-url: http://192.168.1.54:8080/auth
   credentials:
     secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
->>>>>>> fa11c23d86f4714b0be5a183a4cf760af6f28ab7
-mybatis:
-#  configuration:
-#    multiple-result-sets-enabled: false
-#    map-underscore-to-camel-case: true
-#    call-setters-on-nulls: true
-#    jdbc-type-for-null: varchar
-#    default-fetch-size: 500
-  mapper-locations: /mapper/**/*.xml
-  type-aliases-package: com.dream.manage.dto
-
-
-#logging:
-#  file:
-#    name: ${user.dir}/log/test.log  # 로깅 파일 위치이다.
-#    max-history: 7 # 로그 파일 삭제 주기이다. 7일 이후 로그는 삭제한다.
-#    max-size: 10MB  # 로그 파일 하나당 최대 파일 사이즈이다.
-##  level:  # 각 package 별로 로깅 레벨을 지정할 수 있다.
-##    com.project.study : error
-##    com.project.study.controller : debug
 =======
 --- 
 
@@ -85,6 +36,7 @@ spring:
    import: optional:configserver:http://localhost:8888  # config 서버 위치
    
 ---
+>>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e
 
 # actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
 management:
@@ -93,7 +45,6 @@ management:
     exposure:
      include: refresh 
  
->>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e
     
 #외부
 #  # db 설정  
@@ -109,15 +60,6 @@ management:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
-<<<<<<< HEAD
-
-
-          
-          
-          
-
-=======
->>>>>>> fa11c23d86f4714b0be5a183a4cf760af6f28ab7
          
 =======
 ## mybatis 연동 설정
