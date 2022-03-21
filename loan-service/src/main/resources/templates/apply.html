@@ -212,13 +212,17 @@
             <div class="header">
                 <span class="title">대출 신청</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <span class="desc">환영합니다 고객님</span>
 =======
                 <span class="desc" th:text="${session.username} + '님 환영합니다'"></span>
 >>>>>>> fa11c23d86f4714b0be5a183a4cf760af6f28ab7
+=======
+                <div th:text="${list.preferred_username}"></div>
+>>>>>>> 0020fb843b121aba4e2096c10a50ce557daecc68
             </div>
             <input type="hidden" id="proNo" name="proNo" th:value="${proVO.proNo}">
-            <input type="hidden" id="userId" name="userId" value="conan">
+            <input type="hidden" id="userId" name="userId" th:value="${list.preferred_username}">
             <input type="hidden" id="term" name="term" th:value="${proVO.term}">
             <div class="content">
                 

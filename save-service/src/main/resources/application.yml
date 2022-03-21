@@ -9,6 +9,11 @@ spring:
     url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
     username: dream
     password: 1234
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
 
 mybatis:
   mapper-locations: /mapper/**/*.xml
@@ -22,3 +27,12 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+      
+keycloak:
+  realm: MSA
+  bearer-only: true
+  ssl-required: external
+  resource: spring-gateway-client
+  auth-server-url: http://192.168.1.54:8080/auth
+  credentials:
+    secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1

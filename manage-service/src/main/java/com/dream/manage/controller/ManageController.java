@@ -27,6 +27,7 @@ public class ManageController {
 	@GetMapping("/register")
 	public String register(Principal principal, Model model) {
 		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
+		log.info("toString : "+token.getTokenAttributes().toString());
 		model.addAttribute("list", token.getTokenAttributes());
 		return "register";
 	}

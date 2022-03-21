@@ -80,13 +80,15 @@ spring:
         provider:
           keycloak:
             issuer-uri: http://192.168.1.54:8080/auth/realms/MSA
+            user-name-attribute: preferred_username
         registration:
           keycloak:
 #            provider: keycloak
             client-id: spring-gateway-client
             client-secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
             authorization-grant-type: authorization_code
-            redirect-uri: '{baseUrl}/login/oauth2/code/keycloak'      
+            redirect-uri: '{baseUrl}/login/oauth2/code/keycloak'
+                
             
 keycloak:
   realm: MSA

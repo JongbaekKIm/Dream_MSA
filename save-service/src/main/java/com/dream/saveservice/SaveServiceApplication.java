@@ -1,5 +1,6 @@
 package com.dream.saveservice;
 
+import java.security.Principal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,10 +12,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dream.saveservice.dto.MessageVo;
 import com.dream.saveservice.dto.SaveDto;
@@ -23,11 +24,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @EnableEurekaClient
 @SpringBootApplication
 @AllArgsConstructor
 @Controller
+@Slf4j
 public class SaveServiceApplication {
 
 	private static final Logger logger = LoggerFactory.getLogger(SaveServiceApplication.class);
@@ -59,7 +62,7 @@ public class SaveServiceApplication {
 //			logger.info("dto 상품기간 : "+dto.getTerm());
 			logger.info("dto 상품이름 : " + dto.getProNo());
 			logger.info("dto 상품가격 : " + dto.getOrderPrice());
-			logger.info("dto 상품이름 : " + dto.getUserId());
+			logger.info("dto 이름 : " + dto.getUserId());
 
 			service.save(dto);
 
@@ -69,10 +72,13 @@ public class SaveServiceApplication {
 		}
 	}
 
-	// keycloak 세션 정보 받고 나서 @RequestParam 부분 아이디 넘겨받기
+	// keycloak 세션 정보 받고 나서 본인 아이디 검색
 	
 	@GetMapping("/orderCheck")
-	public String orderCheck(@RequestParam(value = "userId")String userId, Model model) {
+	public String orderCheck(Principal principal, Model model) {
+		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
+		String userId=(String) (token).getTokenAttributes().get( "preferred_username");
+		log.info("userId : "+userId);
 		service.select(userId);
 		model.addAttribute("list", service.select(userId));
 		return "orderCheck";
