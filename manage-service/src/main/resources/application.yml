@@ -6,11 +6,6 @@ server:
 spring:
   application:
     name: manage-service
-  devtools:
-     livereload:
-        enabled: true
-     restart:
-        enabled: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
@@ -18,7 +13,7 @@ spring:
     password: 1234
   security:
     oauth2:
-     resourceserver:
+      resourceserver:
         jwt:
           jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
       
