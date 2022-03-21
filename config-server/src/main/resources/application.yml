@@ -9,4 +9,4 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/Advanc2d/msa-config-server
+          uri: https://github.com/JongbaekKIm/Dream_MSA  #Github Repository 주소

@@ -9,6 +9,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.css" rel="stylesheet">
     <link href="css/product.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
 </head>
 <body>
     <div class="slider">
@@ -24,10 +27,21 @@
                     <a class="title" th:text="${product.proName}"></a>
                     <div class="text" th:text="${product.description}"></div>
                     <div class="date" th:text="'만기일 : ' + ${product.term} + '년'"></div>
-                    <form method="get" action="/apply/apply">
+                    
+                    <!-- 기존 : kafka 사용 하지 않고 파라미터로 넘기는 부분 -->
+                    <!-- <form method="get" action="/apply/apply">
                     	<input type="submit" value="대출 신청"/>
                     	<input type="hidden" name="proNo" id="proNo" th:value="${product.proNo}"/>
-                    </form>
+                    </form> -->
+                    
+                    <!-- kafka 사용 하기 위한 부분 -->
+                    <form name="productLoanForm" id="productLoanForm" method="post">
+                    <div class="action">
+                    <!-- <input type="hidden" id="proNo" name="proNo" th:value="${product.proNo}"> -->
+                    <!-- <input type="hidden" name="proNo" id="proNo" th:value="${product.proNo}"/> -->
+                        <button onclick="loanApply()" type="button">대출 신청</button>
+                    </div>
+					</form>                    
                 </div>
             </div>
             <div class="swiper-button-next"></div>
@@ -35,5 +49,36 @@
         </div>
     </div>
     <script src="js/product.js"></script>
+    
+
+    
+    <script>
+    function loanApply(){
+		var proNo = $('#proNo').val();
+		var arr = { "proNo":proNo};
+		
+		var queryString = $("form[name=productLoanForm]").serialize();
+		console.log(queryString);
+		console.log(arr);
+		
+		$.ajax({
+			anyne:true,
+			type :'POST',
+			url :'/product/kafka',
+			data : JSON.stringify(arr),
+			dataType: "text",
+			contentType: 'application/json',
+			success : function(data){
+				alert("변경완료");
+				location.href="/menu/menu";
+			}, 
+			error : function(xhr, status, error){
+				alert(error);
+			}
+		});
+	}
+    </script>
+    <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 </body>
 </html>

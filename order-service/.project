@@ -6,12 +6,20 @@
 	</projects>
 	<buildSpec>
 		<buildCommand>
+<<<<<<< HEAD
 			<name>org.eclipse.jdt.core.javabuilder</name>
+=======
+			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
+>>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
+<<<<<<< HEAD
 			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
+=======
+			<name>org.eclipse.jdt.core.javabuilder</name>
+>>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e
 			<arguments>
 			</arguments>
 		</buildCommand>

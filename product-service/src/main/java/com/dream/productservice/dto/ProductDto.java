@@ -12,9 +12,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDto {
-	private int proNo;	//»óÇ° ¹øÈ£
-	private String proName;	//»óÇ° ÀÌ¸§
-	private double proLimit;	// ´ëÃâ ÇÑµµ
-	private String description;	// »óÇ° ¼³¸í
-	private int term;	//´ëÃâ ±â°£
+	private int proNo;	//ìƒí’ˆ ë²ˆí˜¸
+	private String proName;	//ìƒí’ˆ ì´ë¦„
+	private double proLimit;	// ëŒ€ì¶œ í•œë„
+	private String description;	// ìƒí’ˆ ì„¤ëª…
+	private int term;	//ëŒ€ì¶œ ê¸°ê°„
 }

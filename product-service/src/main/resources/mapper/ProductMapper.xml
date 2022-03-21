@@ -2,4 +2,10 @@
 <mapper namespace="com.dream.productservice.mapper.ProductMapper">
 	<select id="getProductList"
 		resultType="com.dream.productservice.dto.ProductDto"> SELECT * FROM products; </select>
+
+	<!-- kafka 를 이용해 consumer로 보내기 위한 proNo을 db에서 뺴내기 위한 작업 -->
+	<!-- <select id="selectOne"
+		resultType="com.dream.productservice.dto.Message">
+		SELECT proNo FROM products where proNo=#{proNo} </select> -->
 </mapper>
+

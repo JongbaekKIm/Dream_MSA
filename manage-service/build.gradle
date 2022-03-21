@@ -24,11 +24,17 @@ ext {
 }
 
 dependencies {
+<<<<<<< HEAD
 	//oauth server, keycloak bom 이랑 starter keycloak, security 필요
 	implementation('org.keycloak:keycloak-spring-boot-starter')
 	implementation('org.springframework.boot:spring-boot-starter-security')
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 	//원래
+=======
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	
+>>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'

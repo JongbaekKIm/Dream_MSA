@@ -1,7 +1,8 @@
-
+# 내부
 server:
   port: 8002
 
+<<<<<<< HEAD
 
 spring:
   application:
@@ -74,11 +75,35 @@ mybatis:
 ##  level:  # 각 package 별로 로깅 레벨을 지정할 수 있다.
 ##    com.project.study : error
 ##    com.project.study.controller : debug
-    
-eureka:
-  instance:
-    instance-id: manage-microservice-instance
+=======
+--- 
 
+spring:
+  application:
+   name: manage-service  # git에 있는 확장자 제외한 이름.
+  config:
+   import: optional:configserver:http://localhost:8888  # config 서버 위치
+   
+---
+
+# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
+management:
+  endpoints:
+   web:
+    exposure:
+     include: refresh 
+ 
+>>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e
+    
+#외부
+#  # db 설정  
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
+#    username: dream
+#    password: 1234
+
+<<<<<<< HEAD
   client:
     register-with-eureka: true
     fetch-registry: true
@@ -94,3 +119,18 @@ eureka:
 =======
 >>>>>>> fa11c23d86f4714b0be5a183a4cf760af6f28ab7
          
+=======
+## mybatis 연동 설정
+#mybatis:
+#  mapper-locations: /mapper/**/*.xml
+#
+## 유레카 클라이언트 설정
+#eureka:
+#  instance:
+#    instance-id: manage-microservice-instance # eureka에 등록되는 id 값
+#  client:
+#    register-with-eureka: true  # 유레카에 등록할지 여부.
+#    fetch-registry: true  # 유레카에서 조회할지 여부
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka   # 서비스를 등록할 서버 주소를 지정
+>>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e

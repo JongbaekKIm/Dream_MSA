@@ -1,8 +1,13 @@
+# db, mybatis, eureka 설정은 git에 있음.(https://github.com/JongbaekKIm/Dream_MSA.git)
+
 server:
   port: 8007
 
+---
+
 spring:
   application:
+<<<<<<< HEAD
     name: list-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -55,3 +60,39 @@ eureka:
       defaultZone: http://localhost:8761/eureka
 
          
+=======
+   name: list-service  # git에 있는 확장자 제외한 설정파일 이름.
+  config:              # gradle에 config 추가.
+   import: optional:configserver:http://localhost:8888  # config 서버 위치
+   
+---
+# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
+management:
+  endpoints:
+   web:
+    exposure:
+     include: refresh 
+   
+
+#외부
+#  # db 설정      
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
+#    username: dream
+#    password: 1234
+    
+## mybatis 연동 설정
+#mybatis:
+#  mapper-locations: /mapper/**/*.xml
+
+## 유레카 클라이언트 설정    
+#eureka:
+#  instance:
+#    instance-id:  list-microservice-instance  # eureka에 등록되는 id 값
+#  client:
+#    register-with-eureka: true  # 유레카에 등록할지 여부.
+#    fetch-registry: true  # 유레카에서 조회할지 여부
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka # 서비스를 등록할 서버 주소를 지정
+>>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e
