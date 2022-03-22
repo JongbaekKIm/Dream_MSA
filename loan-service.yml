@@ -23,3 +23,8 @@ eureka:
     fetch-registry: true  # 유레카에서 조회할지 여부
     service-url:
       defaultZone: http://localhost:8761/eureka # 서비스를 등록할 서버 주소를 지정
+      
+#kafka 설정
+kafka:
+  server_endpoint: 127.0.0.1:9092
+  topic_name: my-topic
