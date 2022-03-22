@@ -28,12 +28,5 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
-keycloak:
-  realm: MSA
-  bearer-only: true
-  ssl-required: external
-  resource: spring-gateway-client
-  auth-server-url: http://192.168.1.54:8080/auth
-  credentials:
-    secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
- 
+mybatis:
+ mapper-locations: classpath*:mapper/*.xml
