@@ -2,9 +2,7 @@ spring:
   application:
     name: loan-service 
 
-# mybatis 연동 설정   
-mybatis:
-  mapper-locations: classpath*:mapper/*.xml
+
 
 # 유레카 클라이언트 설정            
 eureka:
@@ -21,7 +19,16 @@ kafka:
   server_endpoint: 127.0.0.1:9092
   topic_name: my-topic
 
+
+
+
+
+
 # #내부
+#  # mybatis 연동 설정   
+# mybatis:
+#   mapper-locations: classpath*:mapper/*.xml
+  
 # #keycloak 설정
 # keycloak:
 #   realm: MSA
