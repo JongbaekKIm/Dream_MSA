@@ -17,6 +17,11 @@ spring:
    url: jdbc:mysql://192.168.1.51:3306/dream?serverTimezone=UTC&characterEncoding=UTF-8
    username: dream
    password: 1234
+  security:
+    oauth2:
+     resourceserver:
+        jwt:
+          jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
 
 # 유레카 설정
 eureka:
