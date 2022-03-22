@@ -1,4 +1,4 @@
-# eureka 설정은 git에 있음.(https://github.com/JongbaekKIm/Dream_MSA.git)
+# eureka , manage 설정은 git에 있음.(https://github.com/JongbaekKIm/Dream_MSA.git)
 
 server:
   port: 8005
@@ -14,16 +14,8 @@ spring:
 
    
 ---
-# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
-management:
-  endpoints:
-   web:
-    exposure:
-     include: refresh 
-       
+ 
     
-    
-#외부
 #kafka 설정
 kafka:
   server_endpoint: 127.0.0.1:9092
@@ -68,3 +60,10 @@ keycloak:
   credentials:
     secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
 
+#외부 성공
+# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
+#management:
+#  endpoints:
+#   web:
+#    exposure:
+#     include: refresh 

@@ -1,4 +1,4 @@
-# eureka 설정: git에 있음.(https://github.com/JongbaekKIm/Dream_MSA.git)
+# eureka 설정, devtools : git에 있음.(https://github.com/JongbaekKIm/Dream_MSA.git)
 
 server:
   port: 8001
@@ -11,11 +11,7 @@ spring:
   config:
    import: optional:configserver:http://localhost:8888  # config 서버 위치
    use-legacy-processing: true    #unable to load config data~ 오류 발생시 사용
-  devtools:
-     livereload:  #﻿ html, css, js 수정 시 새로고침 없이 바로 적용가능
-       enabled: true
-     restart:   # 재시작시 완전히 꺼졌다 다시키는 것보다 훨씬 빠르게 해줌.
-      enabled: true  
+  
 
 ## actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
 #management:
@@ -35,3 +31,10 @@ spring:
 #    fetch-registry: true   # 유레카에서 조회할지 여부
 #    service-url:
 #      defaultZone: http://localhost:8761/eureka # 서비스를 등록할 서버 주소를 지정
+
+# spring:
+#  devtools:
+#     livereload:  #﻿ html, css, js 수정 시 새로고침 없이 바로 적용가능
+#       enabled: true
+#     restart:   # 재시작시 완전히 꺼졌다 다시키는 것보다 훨씬 빠르게 해줌.
+#      enabled: true
