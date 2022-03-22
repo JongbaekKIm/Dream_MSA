@@ -14,11 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.dream.manage.dto.ManageDto;
 import com.dream.manage.service.ManageService;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Slf4j
 public class ManageController {
 	private ManageService service;

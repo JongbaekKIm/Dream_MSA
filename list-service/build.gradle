@@ -23,23 +23,14 @@ ext {
 }
 
 dependencies {
-<<<<<<< HEAD
-<<<<<<< HEAD
-implementation('org.keycloak:keycloak-spring-boot-starter')
+
+	implementation('org.keycloak:keycloak-spring-boot-starter')
 	implementation('org.springframework.boot:spring-boot-starter-security')
-=======
-	implementation 'org.keycloak:keycloak-spring-boot-starter'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
->>>>>>> 35d0f18210065289d44ac886a2a50891ef8df718
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-=======
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
-	
->>>>>>> ec6a23e06640487a52c2dfa0c7a6dce6f633945e
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'mysql:mysql-connector-java'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'

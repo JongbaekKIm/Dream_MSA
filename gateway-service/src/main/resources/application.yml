@@ -1,4 +1,4 @@
-# eureka, 라우팅, oAuth, keycloak 설정은 git에 있음.(https://github.com/JongbaekKIm/Dream_MSA.git)
+# eureka, routing, security 설정은 git에 있음.(https://github.com/JongbaekKIm/Dream_MSA.git)
 server:
   port: 8000
 
@@ -7,91 +7,8 @@ spring:
    name: gateway-service  # git에 있는 확장자 제외한 설정파일 이름.
   config:              # gradle에 config 추가.
    import: optional:configserver:http://localhost:8888  # config 서버 위치
-
-
-  cloud:
-    gateway:
-      default-filters:
-        -  TokenRelay
-      routes:          
-        - id: menu-service
-          uri: lb://MENU-SERVICE # uri: http://localhost:8001 # 포워딩 할 주소, http://localhost:8000/menu 로 들어오면 http://localhost:8001로 포워딩
-          predicates:
-            - Path=/menu/** # 해당 gateway 서버의 /menu/**로 들어오는 menu-service로 인식하겠다는 조건
-          filters:
-            - RewritePath=/menu/?(?<segment>.*), /$\{segment}   
-              
-        - id: product-service
-          uri: lb://PRODUCT-SERVICE 
-          predicates:
-            - Path=/product/** 
-          filters:
-            - RewritePath=/product/?(?<segment>.*), /$\{segment}                      
-              
-        - id: manage-service
-          uri: lb://MANAGE-SERVICE 
-          predicates:
-            - Path=/manage/** 
-          filters:
-            - RewritePath=/manage/?(?<segment>.*), /$\{segment}
-        
-        - id: loan-service
-          uri: lb://LOAN-SERVICE 
-          predicates:
-            - Path=/apply/** 
-          filters:
-            - RewritePath=/apply/?(?<segment>.*), /$\{segment} 
-                                 
-        - id: list-service
-          uri: lb://LIST-SERVICE 
-          predicates:
-            - Path=/list/** 
-          filters:
-            - RewritePath=/list/?(?<segment>.*), /$\{segment}   
-            
-        - id: save-service
-          uri: lb://SAVE-SERVICE 
-          predicates:
-            - Path=/save/** 
-          filters:
-            - RewritePath=/save/?(?<segment>.*), /$\{segment}
-                            
-        - id: user-service
-          uri: lb://USER-SERVICE 
-          predicates:
-            - Path=/user/** 
-          filters:
-            - RewritePath=/user/?(?<segment>.*), /$\{segment}
-            
-        - id: status-service
-          uri: lb://STATUS-SERVICE 
-          predicates:
-            - Path=/status/** 
-          filters:
-            - RewritePath=/status/?(?<segment>.*), /$\{segment}
-
-  security:
-    oauth2:
-      client:
-        provider:
-          keycloak:
-            issuer-uri: http://192.168.1.54:8080/auth/realms/MSA
-            user-name-attribute: preferred_username
-        registration:
-          keycloak:
-#            provider: keycloak
-            client-id: spring-gateway-client
-            client-secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
-            authorization-grant-type: authorization_code
-            redirect-uri: '{baseUrl}/login/oauth2/code/keycloak'
-                
-            
-keycloak:
-  realm: MSA
-  resource: spring-gateway-client
-  auth-server-url: http://192.168.1.54:8080/auth
-
-# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
+         
+# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함. (이거는 여기에 있어야할 내용)
 management:
   endpoints:
    web:
@@ -161,5 +78,19 @@ management:
 #            - Path=/user/** # 해당 gateway 서버의 /user/**로 들어오는 요은 user-service로 인식하겠다는 조건
 #          filters:
 #            - RewritePath=/user/?(?<segment>.*), /$\{segment}
-#
+#  security:
+#    oauth2:
+#      client:
+#        provider:
+#          keycloak:
+#            issuer-uri: http://192.168.1.54:8080/auth/realms/MSA
+#            user-name-attribute: preferred_username
+#        registration:
+#          keycloak:
+##            provider: keycloak
+#            client-id: spring-gateway-client
+#            client-secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
+#            authorization-grant-type: authorization_code
+#            redirect-uri: '{baseUrl}/login/oauth2/code/keycloak'
+ 
 

@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-@Data
-@AllArgsConstructor
 @RequiredArgsConstructor
+@AllArgsConstructor
+@Data
 public class ManageDto {
 //	private int proId;
 	private String proName;

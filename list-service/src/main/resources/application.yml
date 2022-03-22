@@ -1,14 +1,16 @@
-# db, mybatis, eureka 설정은 git에 있음.(https://github.com/JongbaekKIm/Dream_MSA.git)
+# eureka 설정은 git에 있음.(https://github.com/JongbaekKIm/Dream_MSA.git)
 
 server:
   port: 8007
 
 spring:
   application:
-     name: list-service  # git에 있는 확장자 제외한 설정파일 이름.
+   name: list-service  # git에 있는 확장자 제외한 설정파일 이름.
   config:              # gradle에 config 추가.
    import: optional:configserver:http://localhost:8888  # config 서버 위치
    use-legacy-processing: true #unable to load config data~ 오류 발생시 사용
+   
+   #외부로 뺴고싶음 근데 실패
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
@@ -19,7 +21,6 @@ spring:
      resourceserver:
         jwt:
           jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
-
 keycloak:
   realm: MSA
   bearer-only: true
@@ -28,15 +29,19 @@ keycloak:
   auth-server-url: http://192.168.1.54:8080/auth
   credentials:
     secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
-   
+## mybatis 연동 설정   
 mybatis:
-#  configuration:
-#    multiple-result-sets-enabled: false
-#    map-underscore-to-camel-case: true
-#    call-setters-on-nulls: true
-#    jdbc-type-for-null: varchar
-#    default-fetch-size: 500
-  type-aliases-package: com.dream.list.dto
+  mapper-locations: /mapper/**/*.xml
+  
+# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
+management:
+  endpoints:
+   web:
+    exposure:
+     include: refresh 
+     
+     
+
 
 
 #logging:
@@ -48,27 +53,7 @@ mybatis:
 ##    com.project.study : error
 ##    com.project.study.controller : debug
     
-
-# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
-management:
-  endpoints:
-   web:
-    exposure:
-     include: refresh 
-   
-
 #외부
-#  # db 설정      
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
-#    username: dream
-#    password: 1234
-    
-## mybatis 연동 설정
-#mybatis:
-#  mapper-locations: /mapper/**/*.xml
-
 ## 유레카 클라이언트 설정    
 #eureka:
 #  instance:
