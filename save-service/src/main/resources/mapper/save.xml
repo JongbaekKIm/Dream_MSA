@@ -4,7 +4,8 @@
 		values(#{proNo}, #{userId}, #{orderPrice}, #{term})</insert> -->
 	<insert id="save">insert into orders(proNo, userId, orderPrice,
 		orderDate, endDate) values(#{proNo}, #{userId}, #{orderPrice},
-		#{orderDate}, #{endDate})</insert>
+		#{orderDate}, #{endDate})
+	</insert>
 
 	<select id="select"
 		resultType="com.dream.saveservice.dto.SaveDto">

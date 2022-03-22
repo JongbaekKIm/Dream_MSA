@@ -4,18 +4,18 @@ import java.security.Principal;
 
 import javax.annotation.security.RolesAllowed;
 
+import org.springframework.http.MediaType;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.dream.manage.dto.ManageDto;
 import com.dream.manage.service.ManageService;
 
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -33,13 +33,12 @@ public class ManageController {
 		return "register";
 	}
 
-	@RolesAllowed({ "ADMIN" })
-	@PostMapping("/register")
-	public String register(@ModelAttribute("dto") ManageDto dto) {
-		log.info("컨트롤러 시작" + dto.getDescription());
+	@PostMapping(value = "/register", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public void register(@RequestBody ManageDto dto) {
+		log.info(dto.toString());
 		service.register(dto);
-		log.info("컨트롤러 끝");
-		return "/regist_success";
+		log.info("서비스 끝" + dto.toString());
+		/* return "regist_success"; */
 	}
 
 	@PostMapping("/modify")

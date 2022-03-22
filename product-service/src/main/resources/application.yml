@@ -28,23 +28,10 @@ spring:
     password: 1234
   resources:
     static-locations: classpath:/resources/static/**
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
-
+    
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
   
-keycloak:
-  realm: MSA
-  bearer-only: true
-  ssl-required: external
-  resource: spring-gateway-client
-  auth-server-url: http://192.168.1.54:8080/auth
-  credentials:
-    secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
     
 eureka:
   instance:

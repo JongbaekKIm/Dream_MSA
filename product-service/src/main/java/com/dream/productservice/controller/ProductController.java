@@ -2,6 +2,7 @@ package com.dream.productservice.controller;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import javax.annotation.security.RolesAllowed;
 import javax.websocket.SendResult;
 
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
+=======
+>>>>>>> c4b360c677734d115ff72904da78766f9986eb85
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.concurrent.ListenableFuture;
@@ -31,7 +34,6 @@ import lombok.extern.slf4j.Slf4j;
 public class ProductController {
 	private final ProductService productService;
 	
-	@RolesAllowed({ "USER" })
 	@GetMapping("/dream")
 	public String dream(Model model, int proNo) throws Exception {
 		List<ProductDto> product = productService.getProductList();
