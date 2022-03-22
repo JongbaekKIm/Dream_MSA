@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: status-service
+ devtools:
+    livereload:
+       enabled: true
+    restart:
+       enabled: true
+  freemarker:
+     cache: false
+  thymeleaf:
+     cache: false
+  resources:
+    static-locations: classpath:/resources/static/**
+ datasource:
+   driver-class-name: com.mysql.cj.jdbc.Driver
+   url: jdbc:mysql://192.168.1.51:3306/dream?serverTimezone=UTC&characterEncoding=UTF-8
+   username: dream
+   password: 1234
+
+# 유레카 설정
+eureka:
+  instance:
+    instance-id: status-microservice-instance
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
