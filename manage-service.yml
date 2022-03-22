@@ -3,12 +3,12 @@ spring:
    name: manage-service  
   
  
-#  # db 설정  
-#   datasource:
-#     driver-class-name: com.mysql.cj.jdbc.Driver
-#     url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
-#     username: dream
-#     password: 1234
+ # db 설정  
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
+    username: dream
+    password: 1234
     
 # mybatis 연동 설정
 mybatis:
