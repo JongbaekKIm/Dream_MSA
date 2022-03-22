@@ -23,7 +23,7 @@ function register() {
 		dataType: "text",
 		success: function(data) {
 			alert("상품이 등록되었습니다. 메인화면으로 돌아갑니다.");
-			location.href = "/menu/menu";
+			location.href = "/menu/list";
 		},
 		error: function(request, status, error) {
 			alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);

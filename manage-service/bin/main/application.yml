@@ -1,23 +1,16 @@
-# 내부
+# eureka, devtools, datasource, myBatis 외부화 완료
 server:
   port: 8002
 
 
 spring:
   application:
-    name: manage-service # git에 있는 확장자 제외한 이름.
+    name: manage-service
   config:
-   import: optional:configserver:http://localhost:8888  # config 서버 위치
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
-    username: dream
-    password: 1234
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-  security:
+   import: optional:configserver:http://localhost:8888
+  security: # security부터 keycloak 까지는 외부화 실패
     oauth2:
-      resourceserver:
+     resourceserver:
         jwt:
           jwk-set-uri: http://192.168.1.54:8080/auth/realms/MSA/protocol/openid-connect/certs
       
@@ -30,34 +23,40 @@ keycloak:
   credentials:
     secret: WEcACPUTWPfuhPrEz3bBaHcl7OLLmYX1
 
-## mybatis 연동 설정
-mybatis:
-  mapper-locations: /mapper/**/*.xml
 
-# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
-management:
-  endpoints:
-   web:
-    exposure:
-     include: refresh 
- 
-    
-#외부
-#  # db 설정  
+
+
+#logging:
+#  file:
+#    name: ${user.dir}/log/test.log  # 로깅 파일 위치이다.
+#    max-history: 7 # 로그 파일 삭제 주기이다. 7일 이후 로그는 삭제한다.
+#    max-size: 10MB  # 로그 파일 하나당 최대 파일 사이즈이다.
+##  level:  # 각 package 별로 로깅 레벨을 지정할 수 있다.
+##    com.project.study : error
+##    com.project.study.controller : debug
+
+#외부화 성공 
+#eureka:
+#  instance:
+#    instance-id: manage-microservice-instance
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+     
+#spring: 
+#  devtools:
+#     livereload:
+#        enabled: true
+#     restart:
+#        enabled: true 
 #  datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    url: jdbc:mysql://192.168.1.51:3306/dream?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
 #    username: dream
-#    password: 1234
+#    password: 1234  
 
-
-#
-## 유레카 클라이언트 설정
-#eureka:
-#  instance:
-#    instance-id: manage-microservice-instance # eureka에 등록되는 id 값
-#  client:
-#    register-with-eureka: true  # 유레카에 등록할지 여부.
-#    fetch-registry: true  # 유레카에서 조회할지 여부
-#    service-url:
-#      defaultZone: http://localhost:8761/eureka   # 서비스를 등록할 서버 주소를 지정
+#mybatis:
+#  mapper-locations: /mapper/**/*.xml
+#  type-aliases-package: com.dream.manage.dto

@@ -23,17 +23,9 @@ ext {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-<<<<<<< HEAD
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
 	implementation 'org.springframework.kafka:spring-kafka'
-	
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
-=======
->>>>>>> c4b360c677734d115ff72904da78766f9986eb85
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
