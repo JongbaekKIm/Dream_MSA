@@ -10,16 +10,16 @@ spring:
 #     username: dream
 #     password: 1234
 
-# # mybatis 연동 설정   
-# mybatis:
-#   mapper-locations: classpath*:mapper/*.xml
+# mybatis 연동 설정   
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
 
-# # 유레카 클라이언트 설정            
-# eureka:
-#   instance:
-#     instance-id: loan-microservice-instance # eureka에 등록되는 id 값
-#   client:
-#     register-with-eureka: true  # 유레카에 등록할지 여부.
-#     fetch-registry: true  # 유레카에서 조회할지 여부
-#     service-url:
-#       defaultZone: http://localhost:8761/eureka # 서비스를 등록할 서버 주소를 지정
+# 유레카 클라이언트 설정            
+eureka:
+  instance:
+    instance-id: loan-microservice-instance # eureka에 등록되는 id 값
+  client:
+    register-with-eureka: true  # 유레카에 등록할지 여부.
+    fetch-registry: true  # 유레카에서 조회할지 여부
+    service-url:
+      defaultZone: http://localhost:8761/eureka # 서비스를 등록할 서버 주소를 지정
