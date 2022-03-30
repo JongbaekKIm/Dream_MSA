@@ -81,11 +81,11 @@ keycloak:
   resource: spring-gateway-client
   auth-server-url: http://192.168.1.54:8080/auth 
 # actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함. (이거는 여기에 있어야할 내용)
-management:
-  endpoints:
-   web:
-    exposure:
-     include: refresh  
+# management:
+#   endpoints:
+#    web:
+#     exposure:
+#      include: refresh  
 #외부
 # 유레카 클라이언트 설정
 eureka:
