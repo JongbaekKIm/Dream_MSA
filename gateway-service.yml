@@ -150,5 +150,7 @@ eureka:
     fetch-registry: true  # 유레카에서 조회할지 여부
     service-url:
       defaultZone: http://localhost:8761/eureka # 서비스를 등록할 서버 주소를 지정
+  instance:
+    instance-id: gateway-microservice-instance # eureka에 등록되는 id 값
 
 
